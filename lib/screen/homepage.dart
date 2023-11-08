@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context).pushNamed('/q1');
+                      Navigator.of(context).pushNamed('/q01');
                     },
                     child: const Text(
                       'Jouer',

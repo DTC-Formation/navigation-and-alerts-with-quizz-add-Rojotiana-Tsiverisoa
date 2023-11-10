@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:quiz_game/colors/my_colors.dart';
+import 'package:quiz_game/screen/homepage.dart';
 
 class GameResult extends StatefulWidget {
   final int finalScore;
@@ -64,7 +65,20 @@ class _GameResultState extends State<GameResult> {
                   ),
                   child: Column(
                     children: [
-                      Text('${widget.finalScore}'),
+                      Text(
+                        'Vous avez obtenu une score de ${widget.finalScore}/10',
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          // Clear all screens and push to HomePage
+                          Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => const HomePage()),
+                            (route) => false,
+                          );
+                        },
+                        child: const Text('Vers la page d\'accueil'),
+                      ),
                     ],
                   ),
                 ),

@@ -17,6 +17,15 @@ class _Question01State extends State<Question01> {
     setState(() {
       score = newValue;
 
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text((score != 0)
+              ? 'Félicitation, c\'est la bonne réponse!'
+              : 'Désolé, ce n\'est pas la bonne réponse'),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+
       Navigator.push(
           context,
           MaterialPageRoute(

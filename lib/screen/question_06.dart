@@ -1,9 +1,32 @@
 import 'package:flutter/material.dart';
 
 import 'package:quiz_game/colors/my_colors.dart';
+import 'package:quiz_game/screen/question_07.dart';
 
-class Question06 extends StatelessWidget {
-  const Question06({super.key});
+class Question06 extends StatefulWidget {
+  final int lastScore;
+
+  const Question06({super.key, required this.lastScore});
+
+  @override
+  State<Question06> createState() => _Question06State();
+}
+
+class _Question06State extends State<Question06> {
+  int score = 0;
+
+  void setScore(BuildContext context, int newValue) {
+    setState(() {
+      score = newValue + widget.lastScore;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Question07(
+              lastScore: score,
+            ),
+          ));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,28 +84,36 @@ class Question06 extends StatelessWidget {
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Le Royaume d\'Espagne'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Le Royaume de France'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Le Royaume de Merina'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 1);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Le Royaume d\'Angleterre'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                     ],

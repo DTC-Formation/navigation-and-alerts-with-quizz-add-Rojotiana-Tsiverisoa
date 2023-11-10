@@ -1,9 +1,32 @@
 import 'package:flutter/material.dart';
 
 import 'package:quiz_game/colors/my_colors.dart';
+import 'package:quiz_game/screen/question_06.dart';
 
-class Question05 extends StatelessWidget {
-  const Question05({super.key});
+class Question05 extends StatefulWidget {
+  final int lastScore;
+
+  const Question05({super.key, required this.lastScore});
+
+  @override
+  State<Question05> createState() => _Question05State();
+}
+
+class _Question05State extends State<Question05> {
+  int score = 0;
+
+  void setScore(BuildContext context, int newValue) {
+    setState(() {
+      score = newValue + widget.lastScore;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Question06(
+              lastScore: score,
+            ),
+          ));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,28 +84,36 @@ class Question05 extends StatelessWidget {
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Vasco da Gama'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Bartolomeu Dias'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Fernão Magalhães'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Diogo Dias'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 1);
+                          },
                         ),
                       ),
                     ],

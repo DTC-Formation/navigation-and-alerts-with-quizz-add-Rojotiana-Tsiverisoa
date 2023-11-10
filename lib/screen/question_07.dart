@@ -1,9 +1,32 @@
 import 'package:flutter/material.dart';
 
 import 'package:quiz_game/colors/my_colors.dart';
+import 'package:quiz_game/screen/question_08.dart';
 
-class Question07 extends StatelessWidget {
-  const Question07({super.key});
+class Question07 extends StatefulWidget {
+  final int lastScore;
+
+  const Question07({super.key, required this.lastScore});
+
+  @override
+  State<Question07> createState() => _Question07State();
+}
+
+class _Question07State extends State<Question07> {
+  int score = 0;
+
+  void setScore(BuildContext context, int newValue) {
+    setState(() {
+      score = newValue + widget.lastScore;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Question08(
+              lastScore: score,
+            ),
+          ));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,28 +84,36 @@ class Question07 extends StatelessWidget {
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('L\'Accord de Versailles'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('L\'Accord de Bretton Woods'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('L\'Accord de Paris'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('L\'Accord de Andohalo'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 1);
+                          },
                         ),
                       ),
                     ],

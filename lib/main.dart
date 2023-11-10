@@ -11,6 +11,7 @@ import 'package:quiz_game/screen/question_07.dart';
 import 'package:quiz_game/screen/question_08.dart';
 import 'package:quiz_game/screen/question_09.dart';
 import 'package:quiz_game/screen/question_10.dart';
+import 'package:quiz_game/screen/game_result.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,15 +35,16 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => const HomePage(),
         '/q01': (context) => const Question01(),
-        '/q02': (context) => const Question02(),
-        '/q03': (context) => const Question03(),
-        '/q04': (context) => const Question04(),
-        '/q05': (context) => const Question05(),
-        '/q06': (context) => const Question06(),
-        '/q07': (context) => const Question07(),
-        '/q08': (context) => const Question08(),
-        '/q09': (context) => const Question09(),
-        '/q10': (context) => const Question10(),
+        '/q02': (context) => const Question02(lastScore: 0),
+        '/q03': (context) => const Question03(lastScore: 0),
+        '/q04': (context) => const Question04(lastScore: 0),
+        '/q05': (context) => const Question05(lastScore: 0),
+        '/q06': (context) => const Question06(lastScore: 0),
+        '/q07': (context) => const Question07(lastScore: 0),
+        '/q08': (context) => const Question08(lastScore: 0),
+        '/q09': (context) => const Question09(lastScore: 0),
+        '/q10': (context) => const Question10(lastScore: 0),
+        '/res': (context) => const GameResult(finalScore: 0),
       },
     );
   }

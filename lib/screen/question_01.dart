@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
 
 import 'package:quiz_game/colors/my_colors.dart';
+import 'package:quiz_game/screen/question_02.dart';
 
-class Question01 extends StatelessWidget {
+class Question01 extends StatefulWidget {
   const Question01({super.key});
+
+  @override
+  State<Question01> createState() => _Question01State();
+}
+
+class _Question01State extends State<Question01> {
+  int score = 0;
+
+  void setScore(BuildContext context, int newValue) {
+    setState(() {
+      score = newValue;
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Question02(
+              lastScore: score,
+            ),
+          ));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,28 +83,36 @@ class Question01 extends StatelessWidget {
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Christophe Colomb'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Marco Polo'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Vasco de Gama'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 1);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Jacques Cartier'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                     ],

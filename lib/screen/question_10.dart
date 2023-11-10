@@ -1,9 +1,32 @@
 import 'package:flutter/material.dart';
 
 import 'package:quiz_game/colors/my_colors.dart';
+import 'package:quiz_game/screen/game_result.dart';
 
-class Question10 extends StatelessWidget {
-  const Question10({super.key});
+class Question10 extends StatefulWidget {
+  final int lastScore;
+
+  const Question10({super.key, required this.lastScore});
+
+  @override
+  State<Question10> createState() => _Question10State();
+}
+
+class _Question10State extends State<Question10> {
+  int score = 0;
+
+  void setScore(BuildContext context, int newValue) {
+    setState(() {
+      score = newValue + widget.lastScore;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => GameResult(
+              finalScore: score,
+            ),
+          ));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,28 +84,36 @@ class Question10 extends StatelessWidget {
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Andry Rajoelina'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Didier Ratsiraka'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 1);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Marc Ravalomanana'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('Hery Rajaonarimampianina'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                     ],

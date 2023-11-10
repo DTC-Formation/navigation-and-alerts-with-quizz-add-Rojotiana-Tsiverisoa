@@ -1,9 +1,32 @@
 import 'package:flutter/material.dart';
 
 import 'package:quiz_game/colors/my_colors.dart';
+import 'package:quiz_game/screen/question_10.dart';
 
-class Question09 extends StatelessWidget {
-  const Question09({super.key});
+class Question09 extends StatefulWidget {
+  final int lastScore;
+
+  const Question09({super.key, required this.lastScore});
+
+  @override
+  State<Question09> createState() => _Question09State();
+}
+
+class _Question09State extends State<Question09> {
+  int score = 0;
+
+  void setScore(BuildContext context, int newValue) {
+    setState(() {
+      score = newValue + widget.lastScore;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Question10(
+              lastScore: score,
+            ),
+          ));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +84,9 @@ class Question09 extends StatelessWidget {
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('La Révolte des Canuts'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
@@ -69,21 +94,27 @@ class Question09 extends StatelessWidget {
                         child: ElevatedButton(
                           child: const Text(
                               'La Révolte de la Compagnie des Indes'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('La Révolte de Menalamba'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 1);
+                          },
                         ),
                       ),
                       SizedBox(
                         width: size.width,
                         child: ElevatedButton(
                           child: const Text('La Révolte des Taiping'),
-                          onPressed: () {},
+                          onPressed: () {
+                            setScore(context, 0);
+                          },
                         ),
                       ),
                     ],
